@@ -1,0 +1,4 @@
+Time,User,Plant,Soil,Humidity,Temp,pH,Disease,Stress,GradCAM
+2026-02-05 15:01:52.762722,Abi,Grapes,35.0,12.0,30.0,5.0,Leaf Blight,Stress,static/uploads\gradcam_0b267a2e-c32d-47cd-8494-efc12a326493___FAM_L.Blight_0815.JPG,Severe,46.044921875
+2026-02-05 15:56:24.804043,Abi,Grapes,35.0,12.0,30.0,5.0,Leaf Blight,Stress,static/uploads\gradcam_0b1c9d42-1c2f-47fa-ad5c-409624f10fbd___FAM_L.Blight_4748_flipLR.JPG,Severe,48.16741943359375
+2026-02-06 10:18:24.214516,Abi,Grapes,89.0,53.0,24.0,4.0,Leaf Blight,Stress,static/uploads\gradcam_0a04146e-d973-40ad-ac79-3cc37b26fd58___FAM_L.Blight_4874.JPG,Severe,46.34857177734375

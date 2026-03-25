@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crop Health Timeline</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #d4fc79, #96e6a1);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            margin: 40px auto;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #e0f7fa, #e8f5e9); /* Light blue-green */
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .welcome {
+            text-align: center;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .filter-box {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        select {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            background-color: white;
+        }
+
+        /* 🔽 Reduced Chart Size */
+        .chart-container {
+            position: relative;
+            height: 200px;     /* Reduced height */
+            width: 70%;        /* Reduced width */
+            margin: 0 auto;
+            background: rgba(255,255,255,0.6);
+            padding: 15px;
+            border-radius: 15px;
+        }
+
+        .btn {
+            display: block;
+            margin: 25px auto 0;
+            padding: 10px 20px;
+            background: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #1b5e20;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h2>🌿 Crop Severity Timeline</h2>
+        <div class="welcome">Welcome, {{ username }}</div>
+
+        <div class="filter-box">
+            <label><b>Select Plant:</b></label>
+            <select id="plantFilter" onchange="updateChart()">
+                <option value="all">All Plants</option>
+                <option value="cucumber">Cucumber</option>
+                <option value="grapes">Grapes</option>
+            </select>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="severityChart"></canvas>
+        </div>
+
+        <a href="/dashboard">
+            <button class="btn">⬅ Back to Dashboard</button>
+        </a>
+    </div>
+</div>
+
+<script>
+const dates = {{ all_dates | tojson }};
+const cucumberData = {{ cucumber_severity | tojson }};
+const grapesData = {{ grapes_severity | tojson }};
+
+const ctx = document.getElementById("severityChart").getContext("2d");
+
+let chart = new Chart(ctx, {
+    type: "line",
+    data: {
+        labels: dates,
+        datasets: [
+            {
+                label: "Cucumber Severity (%)",
+                data: cucumberData,
+                borderColor: "#ff9800",
+                backgroundColor: "#ff9800",
+                tension: 0.4,
+                spanGaps: true,
+                borderWidth: 2
+            },
+            {
+                label: "Grapes Severity (%)",
+                data: grapesData,
+                borderColor: "#6a1b9a",
+                backgroundColor: "#6a1b9a",
+                tension: 0.4,
+                spanGaps: true,
+                borderWidth: 2
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: "top",
+                labels: {
+                    boxWidth: 12
+                }
+            }
+        },
+        scales: {
+            y: {
+                min: 0,
+                max: 100,
+                title: {
+                    display: true,
+                    text: "Severity %"
+                }
+            },
+            x: {
+                title: {
+                    display: true,
+                    text: "Date"
+                }
+            }
+        }
+    }
+});
+
+function updateChart() {
+    const selected = document.getElementById("plantFilter").value;
+
+    if (selected === "cucumber") {
+        chart.data.datasets[0].hidden = false;
+        chart.data.datasets[1].hidden = true;
+    }
+    else if (selected === "grapes") {
+        chart.data.datasets[0].hidden = true;
+        chart.data.datasets[1].hidden = false;
+    }
+    else {
+        chart.data.datasets[0].hidden = false;
+        chart.data.datasets[1].hidden = false;
+    }
+
+    chart.update();
+}
+</script>
+
+</body>
+</html>

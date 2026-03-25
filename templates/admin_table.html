@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin - All Predictions</title>
+    <style>
+        body { font-family: Arial; background:#f4f6f9; }
+        table { border-collapse: collapse; width: 95%; margin:auto; background:white; }
+        th, td { border:1px solid #ccc; padding:8px; text-align:center; }
+        th { background:#2e7d32; color:white; }
+        h2 { text-align:center; }
+        .btn { padding:8px 15px; background:green; color:white; border:none; }
+    </style>
+</head>
+<body>
+
+<h2>📋 All User Predictions</h2>
+
+<table>
+    <tr>
+        <th>Date</th>
+        <th>User</th>
+        <th>Plant</th>
+        <th>Disease</th>
+        <th>Stress</th>
+        <th>Severity</th>
+        <th>%</th>
+    </tr>
+
+    {% for r in records %}
+    <tr>
+        <td>{{ r.date }}</td>
+        <td>{{ r.username }}</td>
+        <td>{{ r.plant_name }}</td>
+        <td>{{ r.disease }}</td>
+        <td>{{ r.stress }}</td>
+        <td>{{ r.severity }}</td>
+        <td>{{ r.severity_percent }}%</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<center><a href="/admin"><button class="btn">⬅ Back</button></a></center>
+
+</body>
+</html>

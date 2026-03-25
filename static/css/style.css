@@ -1,0 +1,123 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: linear-gradient(to right, #b7f8db, #50a7c2);
+}
+
+/* Top Bar */
+.topbar {
+    background: #1e8449;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info {
+    font-size: 14px;
+}
+
+.logout-btn {
+    margin-left: 15px;
+    padding: 6px 12px;
+    background: #e74c3c;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Layout */
+.main-container {
+    display: flex;
+    padding: 30px;
+    gap: 30px;
+}
+
+/* Form Card */
+.form-card {
+    width: 30%;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.form-card input {
+    width: 100%;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.form-card button {
+    width: 100%;
+    padding: 12px;
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* Results Section */
+.result-section {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Result Cards */
+.result-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.disease-card { border-left: 6px solid #c0392b; }
+.stress-card { border-left: 6px solid #f39c12; }
+.heatmap-card { text-align: center; }
+
+.heatmap-img {
+    width: 250px;
+    border-radius: 10px;
+}
+
+.chart-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #2980b9;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.image-compare {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.compare-img {
+    width: 240px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.chart-btn {
+    display: inline-block;
+    background-color: #1565c0;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.chart-btn:hover {
+    background-color: #0d47a1;
+}

@@ -1,0 +1,14 @@
+flask
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+tensorflow
+opencv-python
+mysql-connector-python
+pillow
+imbalanced-learn
+xgboost
+lightgbm
+joblib
